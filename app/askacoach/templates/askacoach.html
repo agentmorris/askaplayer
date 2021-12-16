@@ -1,0 +1,57 @@
+<html><body>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/askacoach.css') }}" />
+
+<html lang="en">
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+
+<script type=text/javascript>
+    $(function(){
+	$('#process-input').click(function(){
+		// var request = $('#question-text').val();
+		$.ajax({
+			url: '/request',
+			data: 'test',
+			type: 'GET',
+			success: function(response){
+				console.log(response);
+				document.getElementById("responsediv").style.visibility = "visible";
+                // var jsonObject = JSON.parse(response)
+                document.getElementById("responsetextfield").innerHTML = response["response"];
+			},
+			error: function(error){
+				console.log(error);
+			}        
+		});
+		return false;
+	});
+});
+</script>
+        
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlayerBot 2000</title>
+</head>
+
+<body>
+
+<div class="titlediv">
+<p class="ptitle">Ask an NFL player...</a></p>
+<p class="psubtitle">...anything that's on your mind.</a></p>
+</div>
+
+<div style="margin:20px;">
+<form id="question-form">
+<input type="text" id="question-text" name="question_text" ><br/>
+<input id="process-input" type="submit" value="Ask the player" />
+</form>
+</div>
+
+
+<div id="responsediv" style="visibility:hidden;">
+    <p class="psubtitle" style="color:black;text-align:center;">The NFL player says...</a></p>
+    <p class="presponse" id="responsetextfield"></p>
+</div>
+
+</body></html>
+

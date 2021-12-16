@@ -1,0 +1,3 @@
+.spyproject/
+app/askacoach/__pycache__/
+app/instance/askacoach.sqlite
