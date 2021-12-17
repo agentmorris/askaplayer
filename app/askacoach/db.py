@@ -59,8 +59,6 @@ def init_db():
             except Exception as e:
                 print('DB error: {}'.format(str(e)))
 
-    print('Current directory: {}'.format(os.getcwd()))
-
 
 @click.command('init-db')
 @with_appcontext
